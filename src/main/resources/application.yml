@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: DynamicProfileApp
+
+  profiles:
+    active: dev  # Default profile
+
+  jpa:
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh,env"
+  endpoint:
+    refresh:
+      enabled: true
+    env:
+      show-values: always
+      enabled: true
+
+
+server:
+  port: 8080
+
+---
+# Dev Profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/DynamicRoutingDataSourceDev
+    username: root
+    password: admin@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: DynamicDBPool
+      auto-commit: true  # Enable auto-commit for HikariCP
+
+
+---
+# SIT Profile
+spring:
+  config:
+    activate:
+      on-profile: sit
+  datasource:
+    url: jdbc:mysql://localhost:3306/DynamicRoutingDataSourceSit
+    username: root
+    password: admin@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: DynamicDBPool
+      auto-commit: true  # Enable auto-commit for HikariCP
