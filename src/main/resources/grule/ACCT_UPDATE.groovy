@@ -11,7 +11,7 @@ class AccountUpdater {
 
         return "Account ${accountData.accountNumber} updated successfully."
     }
-}
+
 
 // Sample execution (if run directly)
 if (this == null || this.class.name == 'Script1') {
