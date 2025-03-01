@@ -28,43 +28,21 @@ pipeline {
             }
         }
 
-        stage('Build Application') {
+        stage('Build with Maven') {
             steps {
-                script {
-                    if (fileExists('mvnw')) {
-                        sh './mvnw clean package -DskipTests'  // Use Maven Wrapper
-                    } else if (fileExists('gradlew')) {
-                        sh './gradlew build -x test'  // Use Gradle Wrapper
-                    } else {
-                        error "No Maven or Gradle build file found!"
-                    }
-                }
+                sh './mvnw clean package -DskipTests'  // Using Maven Wrapper
             }
         }
 
         stage('Run Tests') {
             steps {
-                script {
-                    if (fileExists('mvnw')) {
-                        sh './mvnw test'
-                    } else if (fileExists('gradlew')) {
-                        sh './gradlew test'
-                    } else {
-                        error "No Maven or Gradle build file found!"
-                    }
-                }
+                sh './mvnw test'
             }
         }
 
         stage('Package and Archive') {
             steps {
-                script {
-                    def artifactPath = 'target/*.jar'
-                    if (fileExists('build/libs/')) {
-                        artifactPath = 'build/libs/*.jar'  // Gradle default output
-                    }
-                    archiveArtifacts artifacts: artifactPath, fingerprint: true
-                }
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
     }
