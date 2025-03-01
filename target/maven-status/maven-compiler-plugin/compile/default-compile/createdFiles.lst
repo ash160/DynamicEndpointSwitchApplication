@@ -1,0 +1,7 @@
+com/DynamicEndpointSwitch/DynamicEndpointSwitchApplication.class
+com/DynamicEndpointSwitch/Controller/UserController.class
+com/DynamicEndpointSwitch/Repository/UserRepository.class
+com/DynamicEndpointSwitch/Controller/ProfileSwitchController.class
+com/DynamicEndpointSwitch/Entity/User.class
+com/DynamicEndpointSwitch/Config/DynamicProfileConfig.class
+com/DynamicEndpointSwitch/Service/UserService.class
