@@ -18,7 +18,8 @@ if (this == null || this.class.name == 'Script1') {
     def accountService = new AccountUpdater()
     def result = accountService.updateAccountDetails([
             accountNumber: "123456789",
-            holderName: "John Doe",
-            balance: 5000.75
+            holderName   : "John Doe",
+            balance      : 5000.75
     ])
     println result
+}
