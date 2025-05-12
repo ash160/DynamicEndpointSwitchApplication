@@ -22,4 +22,3 @@ if (this == null || this.class.name == 'Script1') {
             balance      : 5000.75
     ])
     println result
-}
