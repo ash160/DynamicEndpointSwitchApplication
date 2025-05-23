@@ -1,6 +1,6 @@
 class AccountUpdater {
 
-    def updateAccountDetails(Map accountData) {
+    def updateAccountDetails(Map accountData)
         if (!accountData.accountNumber) {
             throw new IllegalArgumentException("Account number is required")
         }
